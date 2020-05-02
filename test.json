@@ -1,0 +1,41 @@
+[{
+		"player_id": 278,
+		"player_name": "K. Mbappé",
+		"firstname": "Kylian",
+		"lastname": "Mbappé Lottin",
+		"position": "Attacker",
+		"nationality": "France",
+		"team_id": 85,
+		"team_name": "Paris Saint Germain"
+	},
+	{
+		"player_id": 3246,
+		"player_name": "N. Pépé",
+		"firstname": "Nicolas",
+		"lastname": "Pépé",
+		"position": "Attacker",
+		"nationality": "Côte d'Ivoire",
+		"team_id": 79,
+		"team_name": "Lille"
+	},
+	{
+		"player_id": 274,
+		"player_name": "E. Cavani",
+		"firstname": "Edinson Roberto",
+		"lastname": "Cavani Gómez",
+		"position": "Attacker",
+		"nationality": "Uruguay",
+		"team_id": 85,
+		"team_name": "Paris Saint Germain"
+	},
+	{
+		"player_id": 1922,
+		"player_name": "F. Thauvin",
+		"firstname": "Florian",
+		"lastname": "Thauvin",
+		"position": "Midfielder",
+		"nationality": "France",
+		"team_id": 81,
+		"team_name": "Marseille"
+	}
+]

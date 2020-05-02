@@ -1,0 +1,76 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
+  <head>
+    <link rel='stylesheet' type="text/css" href='style.css' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="navbar.js"></script>
+    <title>Champions League Stats</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <!-- Axios -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <!-- VueJS -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <button>🞬</button>
+        <li><a href="strzelcy.html">Najlepsi strzelcy</a></li>
+        <li><a href="ranking.html">Ranking drużyn</a></li>
+        <li><a href="kartki.html">Zawodnicy z największą ilością kartek</a></li>
+        <li><a href="main.html">Strona główna</a></li>
+      </ul>
+    </nav>
+    <h1>Najlepsi strzelcy sezonu 18/19</h1>
+<div class="container mt-4" id="app">
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Player ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Position</th>
+          <th scope="col">Nationality</th>
+          <th scope="col">Team ID</th>
+          <th scope="col">Team Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="topscorer in topscorers">
+          <td>{{ topscorer.player_id }}</td>
+          <td>{{ topscorer.player_name }}</td>
+          <td>{{ topscorer.firstname }}</td>
+          <td>{{ topscorer.lastname }}</td>
+          <td>{{ topscorer.position }}</td>
+          <td>{{ topscorer.nationality }}</td>
+          <td>{{ topscorer.team_id }}</td>
+          <td>{{ topscorer.team_name }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+ <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        topscorers: []
+      },
+      mounted: function() {
+        axios.get('https://jfilipek1.github.io/sport-app-spa/test.json')
+            .then(response => {
+              this.topscorers = response.data;
+              console.log(response);
+            })
+            .catch(error => {
+              console.log(error);
+            });
+      }
+    })
+  </script>
+    <style></style>
+  </body>
+</html>
