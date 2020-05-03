@@ -9,7 +9,7 @@ var instasearchApp = new Vue({
 	
 	mounted() {
 		axios
-			.get('https://open-football-apis.github.io/open-football-api/teams.json')
+			.get('https://raw.githubusercontent.com/open-football-apis/stocks-wig20/master/wig20.json')
 			.then(response => {
 				this.photoFeed = response.data;
 			})
