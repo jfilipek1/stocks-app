@@ -3,6 +3,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <title>GameGuidez</title>
@@ -106,7 +109,28 @@
   <div class="container" style="margin-top: 40px;">
     <ul class="collapsible z-depth-0 guides" style="border: none;">
 
-    </ul>
+    </ul><br>
+     <div id="app-instasearch">
+	
+		<div class="input-container">
+			<input type="text" placeholder="Wpisz nazwę klubu" v-model="authorNameSearchString" />
+		</div>
+		
+		<transition-group tag="ul" name="list-animation">
+			
+			<li class="photo photo-animated" v-for="photo in filteredPhotoFeed" v-bind:key="photo.id">
+				<img v-bind:src="photo.logo" />
+				<span class="name">{{ photo.name }}</span><br>
+				<span class="code">{{ photo.code }}</span><br>
+				<span class="price">Price: {{ photo.price }}</span><br>
+				<span class="change">{{ photo.change }}</span>
+			</li>
+			
+		</transition-group>
+	
+	</div>
+	
+	<script src="app.js"></script>                                                           
   </div>
   
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
