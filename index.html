@@ -9,7 +9,7 @@
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 	<link rel='stylesheet' type="text/css" href='style.css' />
-  <title>GameGuidez</title>
+  <title>Stocks</title>
 </head>
 <body class="grey lighten-3"">
 
@@ -27,7 +27,7 @@
             <a href="#" class="grey-text" id="logout">Logout</a>
           </li>
           <li class="logged-in" style="display: none;">
-            <a href="#" class="grey-text modal-trigger" data-target="modal-create">Create Guide</a>
+            <a href="#" class="grey-text modal-trigger" data-target="modal-create">Comment</a>
           </li>
           <li class="logged-out" style="display: none;">
             <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
@@ -91,17 +91,17 @@
   <!-- CREATE GUIDE MODAL -->
   <div id="modal-create" class="modal">
     <div class="modal-content">
-      <h4>Create Guide</h4><br />
+      <h4>Comment</h4><br />
       <form id="create-form">
         <div class="input-field">
           <input type="text" id="title" required>
-          <label for="title">Guide Title</label>
+          <label for="title">Title</label>
         </div>
         <div class="input-field">
           <textarea id="content" class="materialize-textarea" required></textarea>
-          <label for="content">Guide Content</label>
+          <label for="content">Content</label>
         </div>
-        <button class="btn yellow darken-2 z-depth-0">Create</button>
+        <button class="btn yellow darken-2 z-depth-0">Post</button>
       </form>
     </div>
   </div>
