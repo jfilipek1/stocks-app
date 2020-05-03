@@ -32,12 +32,12 @@
 		
 		<transition-group tag="ul" name="list-animation">
 			
-			<li class="photo photo-animated" v-for="photo in filteredPhotoFeed" v-bind:key="photo.team_id">
+			<li class="photo photo-animated" v-for="photo in filteredPhotoFeed" v-bind:key="photo.id">
 				<img v-bind:src="photo.logo" />
 				<span class="name">{{ photo.name }}</span><br>
-				<span class="founded">Rok założenia: {{ photo.founded }}</span><br>
-				<span class="venue_name">Stadion: {{ photo.venue_name }}</span><br>
-				<span class="venue_city">{{ photo.venue_city }}</span>
+				<span class="code">{{ photo.code }}</span><br>
+				<span class="price">Price: {{ photo.price }}</span><br>
+				<span class="change">{{ photo.change }}</span>
 			</li>
 			
 		</transition-group>
