@@ -178,7 +178,50 @@ function getGoldPrices() {
   </div>
     </div>
   </div>
-						     
+		
+<!-- CURRENCY MODAL -->
+  <div id="modal-currency" class="modal">
+    <div class="modal-content">
+      <h1>Currency rates</h1>
+		<p>Click the button below to show current rates</p>
+		<input type="button" value="Show" onclick="currencies()">
+		<p id="USD"></p>
+		<p id="EUR"></p>
+		<p id="GBP"></p>
+
+
+		<script>
+			function currencies(){
+
+				var codes = ["USD", "EUR", "GBP"];
+				codes.forEach(connect);
+
+			function connect(code){
+				var xmlhttp = new XMLHttpRequest();
+				var url = `http://api.nbp.pl/api/exchangerates/rates/a/${code}/?format=json`
+
+				xmlhttp.onreadystatechange = function() {
+    					if (this.readyState == 4 && this.status == 200) {
+        					var myArr = JSON.parse(this.responseText);
+						display(myArr);
+    				}
+			};
+			xmlhttp.open("GET", url, true);
+			xmlhttp.send();
+
+			}
+			
+
+			function display(arr) {
+    				var out = "";
+    				out += "1 " + arr.code + " = " + arr.rates[0].mid + " PLN";
+    				document.getElementById(arr.code).innerHTML = out;
+			}	
+			}
+		</script>
+    </div>
+  </div>
+			      
   <!-- GUIDE LIST -->
   <div class="container" style="margin-top: 40px;">
     <ul class="collapsible z-depth-0 guides" style="border: none;">
