@@ -142,8 +142,41 @@
 	
 	</div>
 	
-	<script src="app.js"></script>                                                           
+	<script src="app.js"></script>  
+			    
+	<template>
+  <div class="container">
+    <line-chart
+      v-if="loaded"
+      :chartdata="chartdata"
+      :options="options"/>
   </div>
+</template>
+
+<script>
+import LineChart from './Chart.vue'
+
+export default {
+  name: 'LineChartContainer',
+  components: { LineChart },
+  data: () => ({
+    loaded: false,
+    chartdata: null
+  }),
+  async mounted () {
+    this.loaded = false
+    try {
+      const { userlist } = await fetch('/api/userlist')
+      this.chartdata = userlist
+      this.loaded = true
+    } catch (e) {
+      console.error(e)
+    }
+  }
+}
+</script>
+  </div>
+			    
   
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
