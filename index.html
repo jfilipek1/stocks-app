@@ -52,6 +52,12 @@
           <li class="logged-out" style="display: none;">
             <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
           </li>
+          <li class="logged-in" style="display: none;">
+            <a href="#" class="grey-text modal-trigger" data-target="modal-chart">Gold chart</a>
+          </li>
+          <li class="logged-out" style="display: none;">
+            <a href="#" class="grey-text modal-trigger" data-target="modal-chart">Gold chart</a>
+          </li>
         </span>
       </ul>
     </div>
@@ -123,34 +129,10 @@
     </div>
   </div>
 
-  <!-- GUIDE LIST -->
-  <div class="container" style="margin-top: 40px;">
-    <ul class="collapsible z-depth-0 guides" style="border: none;">
-
-    </ul><br>
-     <div id="app-instasearch">
-	
-		<div class="input-container">
-			<input type="text" placeholder="Enter company name" v-model="authorNameSearchString" />
-		</div>
-		
-		<transition-group tag="ul" name="list-animation">
-			
-			<li class="photo photo-animated" v-for="photo in filteredPhotoFeed" v-bind:key="photo.id">
-				<img v-bind:src="photo.logo" /><br>
-				<span class="name">{{ photo.name }}</span><br>
-				<span class="code">{{ photo.code }}</span><br>
-				<span class="price">Price: {{ photo.price }}</span><br>
-				<span class="change">{{ photo.change }}</span>
-			</li>
-			
-		</transition-group>
-	
-	</div>
-	
-	<script src="app.js"></script>  
-			    
-	<h1>Gold price</h1>
+<!-- CHART MODAL -->
+  <div id="modal-chart" class="modal">
+    <div class="modal-content">
+      <h1>Gold price</h1>
 
 		<canvas id="myChart"></canvas>
 
@@ -194,6 +176,37 @@ function getGoldPrices() {
 		getGoldPrices();
     </script>
   </div>
+    </div>
+  </div>
+						     
+  <!-- GUIDE LIST -->
+  <div class="container" style="margin-top: 40px;">
+    <ul class="collapsible z-depth-0 guides" style="border: none;">
+
+    </ul><br>
+     <div id="app-instasearch">
+	
+		<div class="input-container">
+			<input type="text" placeholder="Enter company name" v-model="authorNameSearchString" />
+		</div>
+		
+		<transition-group tag="ul" name="list-animation">
+			
+			<li class="photo photo-animated" v-for="photo in filteredPhotoFeed" v-bind:key="photo.id">
+				<img v-bind:src="photo.logo" /><br>
+				<span class="name">{{ photo.name }}</span><br>
+				<span class="code">{{ photo.code }}</span><br>
+				<span class="price">Price: {{ photo.price }}</span><br>
+				<span class="change">{{ photo.change }}</span>
+			</li>
+			
+		</transition-group>
+	
+	</div>
+	
+	<script src="app.js"></script>  
+			    
+	
 			    
   
   <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
