@@ -6,6 +6,12 @@
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 	<link rel='stylesheet' type="text/css" href='style.css' />
@@ -144,37 +150,49 @@
 	
 	<script src="app.js"></script>  
 			    
-	<template>
-  <div class="container">
-    <line-chart
-      v-if="loaded"
-      :chartdata="chartdata"
-      :options="options"/>
-  </div>
-</template>
+	<h1>Gold price</h1>
 
-<script>
-import LineChart from './Chart.vue'
+		<canvas id="myChart"></canvas>
 
-export default {
-  name: 'LineChartContainer',
-  components: { LineChart },
-  data: () => ({
-    loaded: false,
-    chartdata: null
-  }),
-  async mounted () {
-    this.loaded = false
-    try {
-      const { userlist } = await fetch('/api/userlist')
-      this.chartdata = userlist
-      this.loaded = true
-    } catch (e) {
-      console.error(e)
-    }
-  }
-}
-</script>
+    <script>
+			
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    type: 'line',
+
+    data: {
+        labels: [],
+        datasets: [{
+            label: 'Gold price 10 DAYS',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [0, 10, 5, 2, 20, 30, 45]
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+
+function getGoldPrices() {
+            let method = "GET";
+            let api = `http://api.nbp.pl/api/cenyzlota/last/10?format=json`;
+            let xhr = new XMLHttpRequest();
+            xhr.open(method, api);
+            xhr.onreadystatechange = function() {
+                if(this.readyState == 4 && this.status == 200) {
+                    let gold = JSON.parse(this.responseText);
+                    for(let i = 0; i < 10; i++) {
+                        chart.data.labels.push(gold[i].data);
+                        chart.data.datasets[0].data.push(gold[i].cena);
+                        chart.update();
+                    }
+                }
+            }
+            xhr.send();
+        }
+		getGoldPrices();
+    </script>
   </div>
 			    
   
